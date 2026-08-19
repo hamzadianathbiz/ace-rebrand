@@ -1,0 +1,14 @@
+# Keep internal material off the public deployment.
+# These files stay local; they are not part of the shipped site.
+
+# Design docs, briefs and reference research
+*.md
+
+# Build source for the OG card (renders to assets/og-cover.png)
+assets/og-cover.source.html
+
+# Concept boards and assets no longer referenced by the page
+concept-light-dark.png
+assets/hero-mosaic.png
+assets/compliance.png
+assets/ace-logomark.png
