@@ -7,8 +7,7 @@
 # Build source for the OG card (renders to assets/og-cover.png)
 assets/og-cover.source.html
 
-# Concept boards and assets no longer referenced by the page
+# Concept boards and assets no longer referenced by the page.
+# hero-mosaic.png and ace-logomark.png are back in use by the hero and header.
 concept-light-dark.png
-assets/hero-mosaic.png
 assets/compliance.png
-assets/ace-logomark.png
