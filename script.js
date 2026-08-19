@@ -1,5 +1,4 @@
-const menuButton = document.querySelector(".menu-button:not(.menu-close)");
-const closeButton = document.querySelector(".menu-close");
+const menuButton = document.querySelector(".menu-button");
 const mobileMenu = document.querySelector("#mobile-menu");
 
 function closeMenu() {
@@ -16,17 +15,13 @@ menuButton.addEventListener("click", () => {
 });
 
 mobileMenu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
-closeButton.addEventListener("click", () => {
-  closeMenu();
-  menuButton.focus();
-});
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !mobileMenu.hidden) {
     closeMenu();
     menuButton.focus();
   }
 });
-window.matchMedia("(min-width: 1024px)").addEventListener("change", (event) => {
+window.matchMedia("(min-width: 901px)").addEventListener("change", (event) => {
   if (event.matches) closeMenu();
 });
 
