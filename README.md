@@ -34,50 +34,53 @@ five pages. The trade is that a nav or footer change has to be made in all five.
 Inner pages differ in one way only: in-page anchors are `/#services` rather than
 `#services`, because a bare hash would resolve against the current page.
 
-## Design brief
+## Design system
 
-The governing brief is the 2026-08-20 ICP-psychology override, summarised in
-`oxide-reference-lock.md`. Two rules it is easy to break by accident:
+Tokens, type and geometry live at the top of `styles.css`. Three primitives
+carry the identity and are easy to break by accident:
 
-- **Green is semantic.** It marks a genuine measured positive outcome and
-  nothing else. It currently appears in two text nodes on the whole site.
-  Copper `--copper` is the brand signature; blue-grey `--info` carries
-  architecture and connectors.
-- **No looping motion.** Reveals only. Figures, security statements and calls to
-  action never animate. Diagram strokes may draw once. There are zero elements
-  with `animation-iteration-count: infinite` and it should stay that way.
+- **Vermilion `--accent`** is oxidised steel, not brand red. Marks, rules,
+  ordinals and one hover state. `--accent` measures 4.39:1 on the page, so any
+  accent text below 24px must use `--accent-hover` instead.
+- **The notch** — `.notch`, `.notch-sm`, `.notch-frame` — is a diagonal clipped
+  corner taken from the ACE mark. Used sparingly so it reads as a signature.
+  `.notch-frame` exists because `clip-path` also clips a border; it draws the
+  hairline as a 1px background behind the clipped child.
+- **Mono is metadata.** Section IDs, annotations, small labels. It sits at
+  roughly 20% of visible characters. Anything a person reads in a sentence is
+  set in Schibsted Grotesk.
+
+`--steel` is `#80868e`, not the `#626870` the brief specified: that value
+measures 3.41:1 and fails AA for the small metadata it carries.
 
 ## Home page order
 
-Hero, proof strip, method, engagements, selected deployments, verticals,
-judgment stays human, assurance, CTA. The order is psychological, not
-editorial: relevance, then value, then proof, then method, then control, then
-execution. Moving proof later undoes the point of the rebuild.
+Nav, hero, methodology, engagements, selected deployments, verticals,
+assurance, CTA, footer. Selected deployments is the one light editorial
+interruption — it inverts the tokens locally on `.results` rather than needing
+a separate stylesheet. Do not add a second light section.
 
-## Hero
+## Motion
 
-Two columns: copy left, layer architecture right, with the vertical strip
-spanning both underneath. The diagram exists to answer the integration
-objection — ACE sits on top of the systems a firm already runs — not to
-demonstrate technical range. It is HTML and CSS, no images, no canvas, no JS.
+Reveals and connector draws only. No loops anywhere: verified as zero elements
+with `animation-iteration-count: infinite`. Figures, security statements and
+calls to action never animate. All of it collapses under
+`prefers-reduced-motion`.
+
+## Photography
+
+Two images, both from the previous ACE site, reprocessed by the script pattern
+in the session log: heavy desaturation, a duotone from ink black to warm bone,
+a trace of vermilion in the upper mids, then darkened. Regenerate them the same
+way if they are ever replaced, or the photography will stop matching the
+interface.
 
 ## Claims
 
-Every figure on the site comes from a real engagement and is traceable to
-`projects/ace-case-study-deck/source.md`. The one illustrative element, the
-value-case table, is labelled illustrative in its own caption. The assurance
-section makes no certification claim. Do not add a figure that cannot be
-evidenced — this audience checks.
-
-## Regenerating the link preview card
-
-Edit `assets/og-cover.source.html`, then re-render at exactly 1200×630:
-
-```sh
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu \
-  --hide-scrollbars --force-device-scale-factor=1 --virtual-time-budget=6000 \
-  --window-size=1200,630 --screenshot=assets/og-cover.png assets/og-cover.source.html
-```
+Every figure is traceable to `projects/ace-case-study-deck/source.md`. The two
+illustrative visuals (the diagnostic workflow map and the prioritisation table)
+say so in their own captions. The assurance section states certification status
+plainly and claims nothing else.
 
 ## Deploying
 

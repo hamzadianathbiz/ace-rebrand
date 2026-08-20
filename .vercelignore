@@ -4,7 +4,7 @@
 # Design docs, briefs and reference research
 *.md
 
-# Build source for the OG card (renders to assets/og-cover.png)
+# Build source for the OG card (renders to assets/og-cover.jpg)
 assets/og-cover.source.html
 
 # Concept boards and assets not referenced by the page
