@@ -34,29 +34,40 @@ five pages. The trade is that a nav or footer change has to be made in all five.
 Inner pages differ in one way only: in-page anchors are `/#services` rather than
 `#services`, because a bare hash would resolve against the current page.
 
-## Hero background
+## Design brief
 
-The hero's visual is a four-panel rail below the copy: Diagnostic, AI
-Opportunity, Blueprint, Deployment. Each panel is an Oxide-style console
-surface — 1px border, carbon fill, mono label with an icon and a caret — and
-each carries content specific to its stage. Green connectors run between them.
+The governing brief is the 2026-08-20 ICP-psychology override, summarised in
+`oxide-reference-lock.md`. Two rules it is easy to break by accident:
 
-It is drawn entirely in HTML and CSS. No images, no canvas, no JS. The build
-sequence autoplays once on load and holds its finished state; the only looping
-motion is the deployment throughput trace. Under `prefers-reduced-motion` every
-animation collapses to its end state, so a reduced-motion visitor sees the
-finished composition immediately.
+- **Green is semantic.** It marks a genuine measured positive outcome and
+  nothing else. It currently appears in two text nodes on the whole site.
+  Copper `--copper` is the brand signature; blue-grey `--info` carries
+  architecture and connectors.
+- **No looping motion.** Reveals only. Figures, security statements and calls to
+  action never animate. Diagram strokes may draw once. There are zero elements
+  with `animation-iteration-count: infinite` and it should stay that way.
 
-The stage timeline lives in `styles.css` as explicit `animation-delay` values on
-`.stage`, `.matrix`, `.opp-row`, `.code span` and `.ship-row`. Changing the pace
-means retuning those delays together — they are a single sequence, not
-independent effects.
+## Home page order
 
-## Section animations
+Hero, proof strip, method, engagements, selected deployments, verticals,
+judgment stays human, assurance, CTA. The order is psychological, not
+editorial: relevance, then value, then proof, then method, then control, then
+execution. Moving proof later undoes the point of the rebuild.
 
-Services, Verticals and Security each animate on scroll, driven by the
-`.is-visible` class the `IntersectionObserver` in `script.js` already applies to
-`.reveal` elements. No extra JS: the observer sets the class, CSS does the rest.
+## Hero
+
+Two columns: copy left, layer architecture right, with the vertical strip
+spanning both underneath. The diagram exists to answer the integration
+objection — ACE sits on top of the systems a firm already runs — not to
+demonstrate technical range. It is HTML and CSS, no images, no canvas, no JS.
+
+## Claims
+
+Every figure on the site comes from a real engagement and is traceable to
+`projects/ace-case-study-deck/source.md`. The one illustrative element, the
+value-case table, is labelled illustrative in its own caption. The assurance
+section makes no certification claim. Do not add a figure that cannot be
+evidenced — this audience checks.
 
 ## Regenerating the link preview card
 
