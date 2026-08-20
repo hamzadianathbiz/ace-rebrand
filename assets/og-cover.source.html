@@ -1,48 +1,42 @@
 <!doctype html>
 <!-- Source for og-cover.png. Re-render at exactly 1200x630:
      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu \
-       --hide-scrollbars --force-device-scale-factor=1 --virtual-time-budget=6000 \
-       --window-size=1200,630 --screenshot=assets/og-cover.png assets/og-cover.source.html -->
+       --hide-scrollbars --virtual-time-budget=6000 --window-size=1200,630 \
+       --screenshot=assets/og-cover.png assets/og-cover.source.html            -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&amp;family=Schibsted+Grotesk:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet">
 <style>
-:root{--void:#0c0f13;--line:#2a3037;--steel:#626870;--ash:#9a9da1;--bone:#e8e3da;--accent:#d34a36;
---sans:"Schibsted Grotesk",Helvetica,Arial,sans-serif;--mono:"IBM Plex Mono",Menlo,monospace}
+:root{--void:#0b0e12;--slate:#303235;--fog:#5d5e61;--steel:#818284;--ash:#a3a4a5;--bone:#dedede;--green:#00d892;
+--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--sans:"Inter",Helvetica,Arial,sans-serif}
 *{box-sizing:border-box;margin:0}
-body{width:1200px;height:630px;overflow:hidden;background:var(--void);color:var(--bone);
-font-family:var(--sans);-webkit-font-smoothing:antialiased}
-.card{position:relative;display:flex;width:1200px;height:630px;flex-direction:column;justify-content:space-between;padding:56px 64px;isolation:isolate}
-.card img.bg{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover}
-.card::after{content:"";position:absolute;z-index:-1;inset:0;
-background:linear-gradient(90deg,rgb(12 15 19 / 94%) 0%,rgb(12 15 19 / 78%) 52%,rgb(12 15 19 / 40%) 100%),linear-gradient(180deg,rgb(12 15 19 / 72%) 0%,rgb(12 15 19 / 0%) 26%,rgb(12 15 19 / 0%) 70%,rgb(12 15 19 / 70%) 100%)}
+body{width:1200px;height:630px;overflow:hidden;background:var(--void);color:var(--bone);font-family:var(--sans);
+-webkit-font-smoothing:antialiased}
+.card{display:flex;width:1200px;height:630px;flex-direction:column;justify-content:space-between;padding:56px 64px;
+background-image:radial-gradient(circle,rgb(129 130 132 / 14%) 1px,transparent 1px);background-size:22px 22px}
 .top{display:flex;align-items:center;justify-content:space-between}
-.top img{width:98px;height:auto}
-.top span{color:var(--steel);font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase}
-h1{max-width:760px;font-size:66px;font-weight:400;letter-spacing:-.026em;line-height:1.04}
-.lede{max-width:640px;margin-top:22px;color:var(--ash);font-size:18px;line-height:1.45}
-.figures{display:flex;gap:44px;padding-top:26px}
-.figures div{position:relative;padding-top:18px}
-.figures div::before{content:"";position:absolute;top:0;left:0;width:20px;height:2px;background:var(--accent)}
-.figures b{display:block;font-size:26px;font-weight:400;letter-spacing:-.022em}
-.figures span{display:block;margin-top:8px;color:var(--steel);font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.top img{width:104px;height:auto}
+.top span{color:var(--steel);font-family:var(--mono);font-size:15px;letter-spacing:.064em;text-transform:uppercase}
+h1{max-width:1000px;font-size:82px;font-weight:400;letter-spacing:-.014em;line-height:1.04;text-wrap:balance}
+.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:26px;color:var(--green);font-family:var(--mono);
+font-size:16px;letter-spacing:.064em;text-transform:uppercase}
+.eyebrow i{width:9px;height:9px;border:1px solid var(--green);background:var(--void)}
+.foot{display:flex;align-items:center;gap:22px;padding-top:26px;border-top:1px solid var(--slate);
+color:var(--ash);font-family:var(--mono);font-size:15px;letter-spacing:.064em;text-transform:uppercase}
+.foot b{width:5px;height:5px;border-radius:50%;background:var(--green);opacity:.7}
 </style>
 </head>
 <body>
   <div class="card">
-    <img class="bg" src="industry.webp" alt="">
     <div class="top"><img src="ace-white-logomark.png" alt=""><span>AI Deployment Co.</span></div>
     <div>
+      <p class="eyebrow"><i></i> AI Advisory &amp; Deployment</p>
       <h1>AI For The Private Capital Industry</h1>
-      <p class="lede">Advisory and deployment that turns high-value workflows into governed production systems.</p>
     </div>
-    <div class="figures">
-      <div><b>47%</b><span>Less IC prep</span></div>
-      <div><b>11 &rarr; 3 days</b><span>Reporting cycle</span></div>
-      <div><b>350 hours</b><span>Returned</span></div>
-      <div><b>$4.5B AUM</b><span>PE deployment</span></div>
+    <div class="foot">
+      <span>Private Equity</span><b></b><span>Investment Banks</span><b></b><span>M&amp;A Boutiques</span><b></b><span>Family Offices</span>
     </div>
   </div>
 </body>

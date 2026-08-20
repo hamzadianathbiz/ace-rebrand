@@ -34,53 +34,39 @@ five pages. The trade is that a nav or footer change has to be made in all five.
 Inner pages differ in one way only: in-page anchors are `/#services` rather than
 `#services`, because a bare hash would resolve against the current page.
 
-## Design system
+## Hero background
 
-Tokens, type and geometry live at the top of `styles.css`. Three primitives
-carry the identity and are easy to break by accident:
+The hero's visual is a four-panel rail below the copy: Diagnostic, AI
+Opportunity, Blueprint, Deployment. Each panel is an Oxide-style console
+surface — 1px border, carbon fill, mono label with an icon and a caret — and
+each carries content specific to its stage. Green connectors run between them.
 
-- **Vermilion `--accent`** is oxidised steel, not brand red. Marks, rules,
-  ordinals and one hover state. `--accent` measures 4.39:1 on the page, so any
-  accent text below 24px must use `--accent-hover` instead.
-- **The notch** — `.notch`, `.notch-sm`, `.notch-frame` — is a diagonal clipped
-  corner taken from the ACE mark. Used sparingly so it reads as a signature.
-  `.notch-frame` exists because `clip-path` also clips a border; it draws the
-  hairline as a 1px background behind the clipped child.
-- **Mono is metadata.** Section IDs, annotations, small labels. It sits at
-  roughly 20% of visible characters. Anything a person reads in a sentence is
-  set in Schibsted Grotesk.
+It is drawn entirely in HTML and CSS. No images, no canvas, no JS. The build
+sequence autoplays once on load and holds its finished state; the only looping
+motion is the deployment throughput trace. Under `prefers-reduced-motion` every
+animation collapses to its end state, so a reduced-motion visitor sees the
+finished composition immediately.
 
-`--steel` is `#80868e`, not the `#626870` the brief specified: that value
-measures 3.41:1 and fails AA for the small metadata it carries.
+The stage timeline lives in `styles.css` as explicit `animation-delay` values on
+`.stage`, `.matrix`, `.opp-row`, `.code span` and `.ship-row`. Changing the pace
+means retuning those delays together — they are a single sequence, not
+independent effects.
 
-## Home page order
+## Section animations
 
-Nav, hero, methodology, engagements, selected deployments, verticals,
-assurance, CTA, footer. Selected deployments is the one light editorial
-interruption — it inverts the tokens locally on `.results` rather than needing
-a separate stylesheet. Do not add a second light section.
+Services, Verticals and Security each animate on scroll, driven by the
+`.is-visible` class the `IntersectionObserver` in `script.js` already applies to
+`.reveal` elements. No extra JS: the observer sets the class, CSS does the rest.
 
-## Motion
+## Regenerating the link preview card
 
-Reveals and connector draws only. No loops anywhere: verified as zero elements
-with `animation-iteration-count: infinite`. Figures, security statements and
-calls to action never animate. All of it collapses under
-`prefers-reduced-motion`.
+Edit `assets/og-cover.source.html`, then re-render at exactly 1200×630:
 
-## Photography
-
-Two images, both from the previous ACE site, reprocessed by the script pattern
-in the session log: heavy desaturation, a duotone from ink black to warm bone,
-a trace of vermilion in the upper mids, then darkened. Regenerate them the same
-way if they are ever replaced, or the photography will stop matching the
-interface.
-
-## Claims
-
-Every figure is traceable to `projects/ace-case-study-deck/source.md`. The two
-illustrative visuals (the diagnostic workflow map and the prioritisation table)
-say so in their own captions. The assurance section states certification status
-plainly and claims nothing else.
+```sh
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu \
+  --hide-scrollbars --force-device-scale-factor=1 --virtual-time-budget=6000 \
+  --window-size=1200,630 --screenshot=assets/og-cover.png assets/og-cover.source.html
+```
 
 ## Deploying
 
